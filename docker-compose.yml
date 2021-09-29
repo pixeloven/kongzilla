@@ -23,7 +23,6 @@ networks:
     external: false
 
 services:
-
   kong-db:
     image: postgres:9.5
     profiles: ["database", "migrations"]
@@ -68,15 +67,6 @@ services:
       - kong-net
     restart: on-failure
 
-  kong-deck:
-    image: "kong/deck"
-    environment:
-      DECK_KONG_ADDR: "http://kong:8001"
-    networks:
-      - kong-net
-    volumes:
-      - ./config:/opt/kong
-
   kong:
     image: "${KONG_DOCKER_TAG:-kong:latest}"
     user: "${KONG_USER:-kong}"
@@ -101,7 +91,6 @@ services:
       # - "${KONG_INBOUND_PROXY_LISTEN?Missing inbound proxy host}:8000:8000/tcp"
       # - "${KONG_INBOUND_SSL_PROXY_LISTEN?Missing inbound proxy ssl host}:8443:8443/tcp"
       # Alternative is deactivating check 5.13 in the security bench, if we consider Kong's own config to be enough security here
-
       - "127.0.0.1:8001:8001/tcp"
       - "127.0.0.1:8444:8444/tcp"
     healthcheck:

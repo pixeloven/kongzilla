@@ -1,3 +1,8 @@
+setup:
+	COMPOSE_PROFILES=setup docker-compose build kong-setup
+	COMPOSE_PROFILES=setup docker-compose run --rm kong-setup
+	COMPOSE_PROFILES=setup docker-compose run --rm kong-deck dump -o /opt/kong/backup.yaml
+
 kong-db-migrations:
 	COMPOSE_PROFILES=migrations KONG_DATABASE=postgres docker-compose up -d
 
@@ -13,3 +18,4 @@ clean:
 	docker-compose rm -f
 
 # kong should not attempt to start until after migration is complete?
+# setup proper profiles for everything except kong???
