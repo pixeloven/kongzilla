@@ -28,4 +28,6 @@ docker-compose run kong-deck dump  -o /opt/kong/kong-prod-test.yaml
 ```
 https://github.com/Kong/deck/issues/371
 
-
+# References
+- https://blog.toast38coza.me/kong-up-and-running-part-2-defining-our-api-gateway-with-ansible/
+- https://dev.to/vousmeevoyez/setup-kong-konga-part-2-dan
