@@ -110,8 +110,8 @@ services:
   kong-dashboard:
     image: pantsel/konga
     profiles: ["database"]
-    depends_on:
-      - kong-db
+    # depends_on:
+    #   - kong-db
     ports:
       - 1337:1337
     environment:
@@ -123,10 +123,10 @@ services:
       DB_PASSWORD: ${KONGA_PG_PASSWORD:-konga}
       DB_DATABASE: ${KONGA_PG_DATABASE:-konga}
     # healthcheck:
-    #   test: ["CMD", "curl", "-f", "http://kong:8001"]
-    #   interval: 5s
-    #   timeout: 2s
-    #   retries: 15
-    restart: on-failure:5
+    #   test: ["CMD", "curl", "-f", "http://kong-dashboard:1337"]
+    #   interval: 10s
+    #   timeout: 10s
+    #   retries: 10
+    restart: on-failure:5 # not going to work as the container exists with 0 always?
     networks:
       - kong-net

@@ -3,14 +3,14 @@ version: '3.9'
 services:
   kong-setup:
     build:
-      context: .
+      context: ./setup
     image: "alpine:latest"
     profiles: ["setup"]
     networks:
       - kong-net
   kong-deck:
     image: "kong/deck"
-    profiles: ["setup"]
+    profiles: ["cli"]
     environment:
       DECK_KONG_ADDR: "http://kong:8001"
     networks:

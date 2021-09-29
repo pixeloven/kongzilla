@@ -55,13 +55,18 @@ curl --location --request POST 'http://kong:8001/consumers/' \
 API_KEY=$(curl --location --request POST 'http://kong:8001/consumers/konga/key-auth' | jq --raw-output '.key')
 
 # @todo Add test to verify key works
-echo "\nSuccesfully secured admin api"
-echo "=================================================="
+# @todo health check on konga would make it so it doesn't just immediate exit
+    # ideally it waits
+# @todo we should output this to a file?
+
+echo -e "Kong configured - succesfully secured admin api\n"
+echo "Run: make kong-db"
+echo "Konga dashboard available: http://$LOCAL_HOST_ADDRESS:1337/"
+echo -e "Register a new Konga admin account and proceed to connect Konga to Kong with the credentials below\n\n"
+
+echo "Key Auth:"
+echo "============================================================"
 echo "Name: $NAME"
 echo "Loopback API: http://$LOCAL_HOST:$PROXY_PORT$ROUTE"
 echo "Key: $API_KEY"
-echo "=================================================="
-
-# Show list of manual steps to take after this -- eventually we will automate the setup for this as well
-    # cmd to run for konga to start
-    # link to konga panel
+echo "============================================================"
