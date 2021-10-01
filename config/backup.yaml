@@ -1,11 +1,11 @@
 _format_version: "1.1"
 consumers:
 - keyauth_credentials:
-  - key: yWuo8EOf4w2YOJXf1mPuvnB2FbfXKd0w
+  - key: gzE65kElrcb209tk8nAsnSaAVXzmy3rF
   username: konga
 services:
 - connect_timeout: 60000
-  host: localhost
+  host: 127.0.0.1
   name: admin-api
   plugins:
   - config:
@@ -30,10 +30,10 @@ services:
   retries: 5
   routes:
   - https_redirect_status_code: 426
-    id: 91867dc1-1d3f-4d5b-9487-3ba13e9e7386
+    id: 8374046d-cc00-4f73-a324-a0d025fb323b
     path_handling: v0
     paths:
-    - /admin-api
+    - /admin
     preserve_host: false
     protocols:
     - http
