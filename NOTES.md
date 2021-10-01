@@ -2,8 +2,10 @@
 - [X] Add konga for development
 - [X] Setup admin api setup script for konga
 - [X] Setup deck for sync/dump of configuration
-- [] Create short simple make file alias for syncing to and from with deck
-- [] Automate kong/konga setup (decK maybe the secret for most of this) multiple configurations?
+- [X] Create short simple make file alias for syncing to and from with deck
+- [X] Automate basic kong setup starting by locking down admin api
+- [] Automate basic konga setup (admin user setup, connection setup, etc)
+- [] Test Konga with swarm kong setup 
 - [] Break docker configuration into development and production
 - [] Lock down docker image versions and get to the latest of each
 - [] some sort of process manager might help to prevent race conditions on startup - especially true for the setup script and migrations
