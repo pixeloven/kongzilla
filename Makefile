@@ -3,7 +3,10 @@ setup:
 	COMPOSE_PROFILES=setup,migrations KONG_DATABASE=postgres docker-compose up -d
 
 dump:
-	COMPOSE_PROFILES=cli docker-compose run --rm kong-deck dump -o /opt/kong/backup.yaml
+	COMPOSE_PROFILES=cli docker-compose run --rm kong-deck dump -o /opt/kong/kong.yaml
+
+sync:
+	COMPOSE_PROFILES=cli docker-compose run --rm kong-deck sync
 
 migration:
 	COMPOSE_PROFILES=migrations KONG_DATABASE=postgres docker-compose up -d
