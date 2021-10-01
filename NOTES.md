@@ -11,7 +11,7 @@
 - [] some sort of process manager might help to prevent race conditions on startup - especially true for the setup script and migrations
 - [] need to find a smart way to hide sensitive values from the configs - https://github.com/Kong/vault-kong-secrets
 - [] Docker compose env vs deck.yaml config - good to check presidence deck.yaml for defaults in the image then docker-compose can override?
-- [] switch to pythin vs bash for setup - going to need more powerful tooling for handling migrations for Konga (also propose to that project once POC is ready)
+- [] switch to python vs bash for setup - going to need more powerful tooling for handling migrations for Konga (also propose to that project once POC is ready)
 
 # Setup
 make kong-db-migrations

@@ -44,7 +44,7 @@ services:
       - kong_data:/var/lib/postgresql/data
 
   kong-migrations:
-    image: "${KONG_DOCKER_TAG:-kong:latest}"
+    image: kong:latest
     command: kong migrations bootstrap
     profiles: ["database", "migrations"]
     depends_on:
@@ -56,7 +56,7 @@ services:
     restart: on-failure
 
   kong-migrations-up:
-    image: "${KONG_DOCKER_TAG:-kong:latest}"
+    image: kong:latest
     command: kong migrations up && kong migrations finish
     profiles: ["database", "migrations"]
     depends_on:
@@ -68,7 +68,7 @@ services:
     restart: on-failure
 
   kong:
-    image: "${KONG_DOCKER_TAG:-kong:latest}"
+    image: kong:latest
     user: "${KONG_USER:-kong}"
     environment:
       <<: *kong-env
@@ -110,8 +110,8 @@ services:
   kong-dashboard:
     image: pantsel/konga
     profiles: ["database"]
-    # depends_on:
-    #   - kong-db
+    depends_on:
+      - kong-db
     ports:
       - 1337:1337
     environment:
@@ -122,11 +122,5 @@ services:
       DB_USER: ${KONGA_PG_USER:-konga}
       DB_PASSWORD: ${KONGA_PG_PASSWORD:-konga}
       DB_DATABASE: ${KONGA_PG_DATABASE:-konga}
-    # healthcheck:
-    #   test: ["CMD", "curl", "-f", "http://kong-dashboard:1337"]
-    #   interval: 10s
-    #   timeout: 10s
-    #   retries: 10
-    restart: on-failure:5 # not going to work as the container exists with 0 always?
     networks:
       - kong-net
