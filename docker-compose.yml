@@ -71,10 +71,9 @@ services:
       - kong-net
     restart: on-failure
 
-  kong-setup:
+  kong-cli:
     build:
-      context: ./setup
-    image: "alpine:latest"
+      context: ./cli
     profiles: ["setup"]
     networks:
       - kong-net
