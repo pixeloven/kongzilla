@@ -1,5 +1,5 @@
 setup:
-	COMPOSE_PROFILES=setup docker-compose build
+	COMPOSE_PROFILES=cli docker-compose build
 	COMPOSE_PROFILES=setup,migrations KONG_DATABASE=postgres docker-compose up -d
 
 dump:

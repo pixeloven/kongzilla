@@ -71,14 +71,14 @@ services:
       - kong-net
     restart: on-failure
 
-  kong-cli:
+  kongzilla:
     build:
       context: ./cli
-    profiles: ["setup"]
+    profiles: ["cli", "setup"]
     networks:
       - kong-net
 
-  kong-deck:
+  deck:
     image: "kong/deck"
     profiles: ["cli"]
     environment:
