@@ -73,7 +73,7 @@ services:
 
   kongzilla:
     build:
-      context: ./cli
+      context: ./kongzilla
     profiles: ["cli", "setup"]
     networks:
       - kong-net
